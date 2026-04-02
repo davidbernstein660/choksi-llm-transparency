@@ -5,10 +5,10 @@ This file is for preparing the public transparency repo for GitHub and Cloudflar
 ## Current Status
 
 - Content drafts exist in `content/`
-- Static HTML pages and shared CSS now exist
+- Static HTML pages and shared CSS now exist in `public/`
 - A Git repository has been initialized in this folder
 - A public GitHub remote exists for this folder
-- No Cloudflare Pages project has been created yet
+- No Cloudflare project has been created yet
 
 ## Pre-Publish Checklist
 
@@ -18,12 +18,13 @@ This file is for preparing the public transparency repo for GitHub and Cloudflar
 - confirm wording stays clearly non-legal and non-contractual
 - confirm the technical doc remains candid about limitations
 
-## Next Pages Setup Step
+## Next Cloudflare Setup Step
 
-Create a Cloudflare Pages project connected to the public GitHub repo with:
+Create a Git-connected Cloudflare static-assets project connected to the public GitHub repo with:
 
 - production branch: `main`
-- framework preset: `None`
-- build command: leave blank
-- build output directory: `/`
+- build command: `exit 0`
+- deploy command: `npx wrangler deploy`
 - custom domain: `choksillmservice.com`
+
+The repository includes a `wrangler.jsonc` file that points the deploy to `./public`.

@@ -50,17 +50,18 @@ That file is intentionally more candid and more operational. It should not be pu
 
 ## Current site files
 
-- `index.html`
-- `privacy/index.html`
-- `privacy/technical/index.html`
-- `faq/index.html`
-- `source/index.html`
-- `assets/site.css`
-- `_headers`
+- `public/index.html`
+- `public/privacy/index.html`
+- `public/privacy/technical/index.html`
+- `public/faq/index.html`
+- `public/source/index.html`
+- `public/assets/site.css`
+- `public/_headers`
+- `wrangler.jsonc`
 
 ## Intended next steps
 
 1. Review and refine the public-safe copy in `content/`.
-2. Deploy with Cloudflare Pages.
+2. Deploy with Cloudflare's Git-based Workers static assets flow.
 3. Add the public custom domain `choksillmservice.com`.
-4. Redirect the default `*.pages.dev` hostname to the custom domain.
+4. Redirect the default `*.workers.dev` hostname to the custom domain if desired.
