@@ -126,9 +126,9 @@ Current design choice:
 
 Current retention behavior:
 
-- family users are assigned to a group with enforced temporary chat
+- family users are assigned to a group with optional temporary/private chat
 - new non-admin users default into that family privacy group automatically
-- new family chats should not persist as normal stored chat history
+- family users can choose between temporary/private chats and persistent chats
 - no known non-admin chats remain in the live database at the time of this update
 - admin chats are not automatically temporary
 
@@ -138,7 +138,7 @@ Known limits:
 - older admin history may still exist
 - backups may still contain older admin chat data
 
-Older family chats that existed before enforced temporary mode were purged from the live database, the later residual non-admin chat was also removed, and the backup database snapshots known to contain family chat history were deleted.
+Older family chats that existed before the current private-vs-persistent mode were purged from the live database, the later residual non-admin chat was also removed, and the backup database snapshots known to contain family chat history were deleted.
 
 ## Logging
 
@@ -182,7 +182,7 @@ Current important controls include:
 - community sharing is disabled
 - admin chat access to other users is disabled in the normal app path
 - admin analytics derived from chat history are disabled
-- family users use enforced temporary chats
+- family users can choose temporary/private chats when they do not want a chat to persist normally
 - dangerous family-facing tools such as shell access and code execution are not enabled
 
 ## Important Limitations
@@ -260,3 +260,4 @@ Likely next steps include:
 - Documented that new non-admin users default into the family privacy group with enforced temporary chat.
 - Documented that community sharing is disabled in the live configuration.
 - Documented that no known non-admin chats remain in the live database after the later cleanup pass.
+- Updated the family retention model so users can choose temporary/private chats or persistent chats instead of being forced into temporary mode.

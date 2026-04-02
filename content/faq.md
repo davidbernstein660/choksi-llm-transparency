@@ -20,7 +20,9 @@ The local host has to process the prompt in plaintext in order to run the model 
 
 ## Are family chats stored?
 
-Family accounts use enforced temporary chats by default, so new family chats should not persist as normal saved chat history. Known older non-admin chats were removed from the live database.
+Family users can now choose between temporary/private chats and persistent chats.
+
+If a family user uses temporary/private mode, that chat should not persist as normal saved chat history. If a family user chooses persistent mode, that chat may be stored locally. Known older non-admin chats were removed from the live database.
 
 ## Can I share chats publicly from inside the app?
 
