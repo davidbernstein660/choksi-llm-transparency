@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /
+
+# This site is meant to be shared directly with humans, not indexed by crawlers.
+# It remains publicly reachable by URL.

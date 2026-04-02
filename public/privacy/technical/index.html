@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Technical Privacy Document | Choksi LLM</title>
   <meta name="description" content="Public-safe technical privacy reference for the Choksi LLM service.">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="googlebot" content="noindex, nofollow, noarchive">
   <link rel="stylesheet" href="/assets/site.css">
 </head>
 <body>
@@ -100,6 +102,11 @@
       <p>The host running the model must process prompts in plaintext during inference.</p>
       <h3>Search is an external disclosure surface</h3>
       <p>Web search sends user intent outside the local machine.</p>
+      <h3>The public transparency site is still public</h3>
+      <p>The public documentation site at <code>https://choksillmservice.com</code> is intentionally public so users can review it before logging in.</p>
+      <p>Current crawler controls for that site include:</p>
+      <ul><li><code>noindex, nofollow, noarchive</code> signals in page metadata and response headers</li><li>a repo-owned <code>robots.txt</code> that asks crawlers not to index the site</li><li>Cloudflare AI crawler controls and managed AI crawler <code>robots.txt</code> directives</li></ul>
+      <p>These controls reduce crawler friendliness, but they do not make the site private. Compliant crawlers may respect them, while non-compliant scrapers can still ignore them.</p>
       <h3>Page fetch is an additional external disclosure surface</h3>
       <p>If <code>fetch_url</code> is used, third-party websites are contacted directly by the backend.</p>
       <h3>Host trust still matters</h3>

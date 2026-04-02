@@ -218,6 +218,18 @@ The host running the model must process prompts in plaintext during inference.
 
 Web search sends user intent outside the local machine.
 
+### The public transparency site is still public
+
+The public documentation site at `https://choksillmservice.com` is intentionally public so users can review it before logging in.
+
+Current crawler controls for that site include:
+
+- `noindex, nofollow, noarchive` signals in page metadata and response headers
+- a repo-owned `robots.txt` that asks crawlers not to index the site
+- Cloudflare AI crawler controls and managed AI crawler `robots.txt` directives
+
+These controls reduce crawler friendliness, but they do not make the site private. Compliant crawlers may respect them, while non-compliant scrapers can still ignore them.
+
 ### Page fetch is an additional external disclosure surface
 
 If `fetch_url` is used, third-party websites are contacted directly by the backend.

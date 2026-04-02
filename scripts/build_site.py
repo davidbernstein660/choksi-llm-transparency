@@ -207,6 +207,8 @@ def article_shell(*, title: str, description: str, body: str, current_nav: str) 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{html.escape(title)}</title>
   <meta name="description" content="{html.escape(description, quote=True)}">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="googlebot" content="noindex, nofollow, noarchive">
   <link rel="stylesheet" href="/assets/site.css">
 </head>
 <body>
@@ -357,6 +359,8 @@ def render_homepage() -> None:
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{SITE_NAME}</title>
   <meta name="description" content="Plain-language privacy and transparency information for the {SITE_NAME} service.">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="googlebot" content="noindex, nofollow, noarchive">
   <link rel="stylesheet" href="/assets/site.css">
 </head>
 <body>

@@ -54,6 +54,7 @@ This service currently keeps webpage reading enabled because it improves researc
 - This service is private, but not anonymous.
 - Cloudflare Access uses identity-based login.
 - The server must see prompts in plaintext while processing them.
+- The public transparency site asks not to be indexed or AI-crawled, but it is still a public website and non-compliant bots can ignore those controls.
 - Anyone with sufficient access to the host machine could inspect local files or logs.
 
 ## How To Use It Safely
