@@ -147,13 +147,15 @@ Current retention behavior:
 - new non-admin users default into that family privacy group automatically
 - family users can choose between temporary/private chats and persistent chats
 - no known non-admin chats remain in the live database at the time of this update
-- admin chats are not automatically temporary
+- operator/admin chats are not automatically temporary
 
 Known limits:
 
-- admin chats may still be stored unless temporary chat is used manually
+- the operator's own admin-account chats may still be stored unless temporary chat is used manually
 - older admin history may still exist
 - backups may still contain older admin chat data
+
+In this document, "admin chats" refers to chats created by the operator while using the admin account. It does not mean the operator automatically receives normal in-app access to other users' private chats.
 
 Older family chats that existed before the current private-vs-persistent mode were purged from the live database, the later residual non-admin chat was also removed, and the backup database snapshots known to contain family chat history were deleted.
 

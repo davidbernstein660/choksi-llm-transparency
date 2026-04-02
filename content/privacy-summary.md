@@ -32,7 +32,7 @@ It uses local models through Ollama and a web interface through Open WebUI. Publ
 - No known non-admin chats remain in the live database at the time of this update.
 - Community chat sharing is disabled.
 - Some operational logs still exist.
-- Admin chats may still be stored unless temporary chat is used manually.
+- The operator's own admin-account chats may still be stored unless temporary chat is used manually. This refers to the operator's own use of the service, not automatic access to other users' chats.
 
 ## Web Search Privacy
 

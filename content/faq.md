@@ -32,7 +32,7 @@ Community sharing is disabled in the current configuration.
 
 ## Are admin chats stored?
 
-They can be, unless temporary chat is used manually.
+The operator's own admin-account chats can be, unless temporary chat is used manually. This refers to the operator's own use of the service, not automatic access to other users' chats.
 
 ## How does web search work?
 
