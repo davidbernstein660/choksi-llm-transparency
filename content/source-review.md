@@ -34,14 +34,12 @@ Technical reviewers should check:
 - Which third parties can see search or fetch traffic?
 - Are dangerous tools such as shell access exposed to family-facing users?
 
-## Planned Public Links
+## Public Links
 
-To be added when published:
-
-- Source code repository
-- Technical privacy document
-- Privacy/transparency summary page
-- Change log or implementation notes
+- [Source code repository](https://github.com/davidbernstein660/choksi-llm-transparency)
+- [Technical privacy document](/privacy/technical/)
+- [Privacy/transparency summary page](/privacy/)
+- [Access the app](https://llm.choksillmservice.com)
 
 ## Review Philosophy
 

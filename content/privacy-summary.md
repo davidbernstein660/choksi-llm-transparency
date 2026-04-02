@@ -68,6 +68,6 @@ If you want, you are welcome to review the implementation yourself or use your o
 
 Suggested links:
 
-- Technical Privacy Document
-- Source Code
-- Implementation Notes / Change History
+- [Technical Privacy Document](/privacy/technical/)
+- [Source Code](https://github.com/davidbernstein660/choksi-llm-transparency)
+- [Implementation Notes / Change History](/source/)
