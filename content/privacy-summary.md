@@ -16,8 +16,8 @@ It uses local models through Ollama and a web interface through Open WebUI. Publ
 
 - Your approved email address is used for login through Cloudflare Access.
 - Your prompts and responses are processed by the local server so the AI can answer.
-- If web search is used, search queries are sent to Brave Search.
-- If the AI reads a webpage, the server fetches that page directly.
+- If web search is used, the server sends Brave Search queries through the service's VPN/proxy-backed research path. This hides the home IP from Brave, but Brave still sees the query and the VPN/proxy provider becomes part of the trust boundary.
+- If the AI reads a webpage, the server fetches that page through the same VPN/proxy-backed path. The destination site can still see the requested URL and the VPN/proxy exit IP.
 
 ## What Is Not Publicly Exposed
 
@@ -45,6 +45,7 @@ In practice, this means:
 - Brave Search can see the search query and the VPN/proxy exit IP used by the service.
 - If the AI reads a webpage, that destination website can see the VPN/proxy exit IP used by the service and the requested URL.
 - Your personal device IP is not sent directly to Brave or the fetched website by these tool calls.
+- The VPN/proxy path reduces exposure of the home IP, but it does not hide the search query from Brave or remove the VPN/proxy provider from the trust chain.
 
 This service currently keeps webpage reading enabled because it improves research quality. That is a deliberate tradeoff, not an accident.
 

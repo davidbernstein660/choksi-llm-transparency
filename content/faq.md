@@ -42,7 +42,7 @@ The backend sends Brave search requests and page fetch requests. Your browser do
 
 ## Who sees web searches?
 
-Brave can see the search query and the VPN/proxy exit IP used by the service. If a webpage is fetched, that website can also see the VPN/proxy exit IP and the requested URL.
+Brave can see the search query and the VPN/proxy exit IP used by the service. If a webpage is fetched, that website can also see the VPN/proxy exit IP and the requested URL. The VPN/proxy path helps hide the home IP, but it does not hide the query from Brave or remove the VPN/proxy provider from the trust chain.
 
 ## Why keep webpage fetching enabled?
 

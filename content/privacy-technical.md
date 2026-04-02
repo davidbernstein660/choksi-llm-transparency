@@ -82,8 +82,8 @@ Temporary chat does not change this runtime fact. Temporary chat reduces storage
 
 If a research preset uses web search:
 
-- search queries are sent to Brave Search
-- if the model chooses to read a page, the backend fetches that page directly
+- search queries are sent to Brave Search from the server side through the service's VPN/proxy-backed research path
+- if the model chooses to read a page, the backend fetches that page through that same VPN/proxy-backed path
 
 How that works in practice:
 
@@ -257,6 +257,7 @@ Likely next steps include:
 - Documented the current family temporary-chat privacy posture.
 - Recorded that `fetch_url` is intentionally retained for research quality despite the added privacy tradeoff.
 - Documented that search and URL fetch egress now use a shared Nord VPN/proxy exit rather than the home IP.
+- Clarified that Brave queries and fetched pages use the VPN/proxy path, while Brave still sees the query and the VPN/proxy provider remains part of the trust boundary.
 - Documented that new non-admin users default into the family privacy group with enforced temporary chat.
 - Documented that community sharing is disabled in the live configuration.
 - Documented that no known non-admin chats remain in the live database after the later cleanup pass.
