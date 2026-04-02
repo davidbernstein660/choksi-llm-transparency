@@ -105,18 +105,18 @@
         <li>If needed, Open WebUI sends the <code>fetch_url</code> request from the server too.</li>
         <li>The user browser does not contact Brave or the destination site directly for those tool calls.</li>
       </ol>
-      <p>This means the origin of search and fetch traffic is the host running this service and its public network egress IP.</p>
-      <p>This origin is not the individual user's device IP and not Cloudflare's public edge.</p>
+      <p>This means the origin of search and fetch traffic is the host running this service and a shared Nord VPN/proxy exit IP used for the research tool path.</p>
+      <p>This origin is not the individual user's device IP, not Cloudflare's public edge, and not the home IP of the host network.</p>
       <p>What Brave can potentially see:</p>
       <ul>
         <li>the search query text</li>
-        <li>the server public IP</li>
+        <li>the VPN/proxy exit IP used by the service</li>
         <li>the Brave API key used by the service</li>
         <li>request timing and normal API metadata</li>
       </ul>
       <p>What destination websites can potentially see:</p>
       <ul>
-        <li>the server public IP</li>
+        <li>the VPN/proxy exit IP used by the service</li>
         <li>the URL that was fetched</li>
         <li>metadata associated with a backend request</li>
       </ul>
