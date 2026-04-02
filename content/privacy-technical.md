@@ -129,6 +129,7 @@ Current retention behavior:
 - family users are assigned to a group with enforced temporary chat
 - new non-admin users default into that family privacy group automatically
 - new family chats should not persist as normal stored chat history
+- no known non-admin chats remain in the live database at the time of this update
 - admin chats are not automatically temporary
 
 Known limits:
@@ -137,7 +138,7 @@ Known limits:
 - older admin history may still exist
 - backups may still contain older admin chat data
 
-Older family chats that existed before enforced temporary mode were purged from the live database, and the backup database snapshots known to contain family chat history were deleted.
+Older family chats that existed before enforced temporary mode were purged from the live database, the later residual non-admin chat was also removed, and the backup database snapshots known to contain family chat history were deleted.
 
 ## Logging
 
@@ -258,3 +259,4 @@ Likely next steps include:
 - Documented that search and URL fetch egress now use a shared Nord VPN/proxy exit rather than the home IP.
 - Documented that new non-admin users default into the family privacy group with enforced temporary chat.
 - Documented that community sharing is disabled in the live configuration.
+- Documented that no known non-admin chats remain in the live database after the later cleanup pass.

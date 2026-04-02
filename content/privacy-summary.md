@@ -29,6 +29,7 @@ It uses local models through Ollama and a web interface through Open WebUI. Publ
 
 - Family accounts use temporary chats by default.
 - That means normal family chat history should not be retained as persistent chat history.
+- No known non-admin chats remain in the live database at the time of this update.
 - Community chat sharing is disabled.
 - Some operational logs still exist.
 - Admin chats may still be stored unless temporary chat is used manually.

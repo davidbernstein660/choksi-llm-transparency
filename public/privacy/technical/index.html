@@ -67,10 +67,10 @@
       <ul><li><code>fetch_url</code> is intentionally retained because it improves research quality</li><li>search-only mode would be more private, but would also noticeably reduce the model&#x27;s ability to read and summarize sources</li></ul>
       <h2>Storage and Retention</h2>
       <p>Current retention behavior:</p>
-      <ul><li>family users are assigned to a group with enforced temporary chat</li><li>new non-admin users default into that family privacy group automatically</li><li>new family chats should not persist as normal stored chat history</li><li>admin chats are not automatically temporary</li></ul>
+      <ul><li>family users are assigned to a group with enforced temporary chat</li><li>new non-admin users default into that family privacy group automatically</li><li>new family chats should not persist as normal stored chat history</li><li>no known non-admin chats remain in the live database at the time of this update</li><li>admin chats are not automatically temporary</li></ul>
       <p>Known limits:</p>
       <ul><li>admin chats may still be stored unless temporary chat is used manually</li><li>older admin history may still exist</li><li>backups may still contain older admin chat data</li></ul>
-      <p>Older family chats that existed before enforced temporary mode were purged from the live database, and the backup database snapshots known to contain family chat history were deleted.</p>
+      <p>Older family chats that existed before enforced temporary mode were purged from the live database, the later residual non-admin chat was also removed, and the backup database snapshots known to contain family chat history were deleted.</p>
       <h2>Logging</h2>
       <p>The service still produces operational metadata such as:</p>
       <ul><li>service start and stop events</li><li>request paths</li><li>status codes</li><li>tunnel events</li><li>login-related metadata</li><li>model runtime timing and load information</li></ul>
@@ -110,7 +110,7 @@
       <ul><li>outbound privacy for searches and page fetches, such as a VPN or other private egress layer</li><li>possible migration to a self-hosted search backend such as SearXNG</li><li>stronger backup retention and deletion policy</li><li>more public source publication and review guidance</li><li>possible future dedicated VPN egress only if reliability later outweighs the privacy benefit of shared exits</li></ul>
       <h2>Change Log</h2>
       <h3>2026-04-02</h3>
-      <ul><li>Created the first public-safe technical privacy document.</li><li>Documented the identity-based Cloudflare Access flow.</li><li>Documented the server-side Brave search and URL fetch flow.</li><li>Documented the current logging posture and audit logging status.</li><li>Documented the current family temporary-chat privacy posture.</li><li>Recorded that <code>fetch_url</code> is intentionally retained for research quality despite the added privacy tradeoff.</li><li>Documented that search and URL fetch egress now use a shared Nord VPN/proxy exit rather than the home IP.</li><li>Documented that new non-admin users default into the family privacy group with enforced temporary chat.</li><li>Documented that community sharing is disabled in the live configuration.</li></ul>
+      <ul><li>Created the first public-safe technical privacy document.</li><li>Documented the identity-based Cloudflare Access flow.</li><li>Documented the server-side Brave search and URL fetch flow.</li><li>Documented the current logging posture and audit logging status.</li><li>Documented the current family temporary-chat privacy posture.</li><li>Recorded that <code>fetch_url</code> is intentionally retained for research quality despite the added privacy tradeoff.</li><li>Documented that search and URL fetch egress now use a shared Nord VPN/proxy exit rather than the home IP.</li><li>Documented that new non-admin users default into the family privacy group with enforced temporary chat.</li><li>Documented that community sharing is disabled in the live configuration.</li><li>Documented that no known non-admin chats remain in the live database after the later cleanup pass.</li></ul>
     </article>
   </main>
 
