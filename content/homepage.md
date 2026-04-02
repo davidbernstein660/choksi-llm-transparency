@@ -6,7 +6,9 @@ Self-hosted AI for friends and family, with candid documentation.
 
 This is a self-hosted AI service for friends and family. It is more private than a typical cloud chatbot, but it is not anonymous and it is not a secure place for secrets.
 
-Technical users are encouraged to inspect the public repository and technical privacy document before using the service.
+Users are encouraged to inspect the public repository and technical privacy document before using the service.
+
+The goal is not to ask people to trust broad claims. Users are encouraged to inspect the code and make their own call.
 
 ### Primary Actions
 
@@ -36,7 +38,7 @@ This service has a detailed technical privacy document for security-minded reade
 
 ### Open Source Review
 
-The goal is not to ask people to trust broad claims. Technical users are encouraged to inspect the code and make their own call.
+This section explains where the public repository and review guidance live.
 
 - [Review guidance](/source/)
 
