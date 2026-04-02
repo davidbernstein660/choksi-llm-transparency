@@ -76,7 +76,24 @@ This means prompt and response content is visible in plaintext during processing
 - the Open WebUI backend
 - the Ollama runtime
 
-Temporary chat does not change this runtime fact. Temporary chat reduces storage after the fact. It does not prevent the server from seeing the prompt while processing it.
+This does not automatically mean the prompt is being permanently logged or saved.
+
+There is an important difference between:
+
+- runtime access: the software must be able to read the prompt in order to process it and generate a response
+- logging or storage: the prompt is written to logs, databases, backups, or other persistent records
+
+This service tries to reduce logging and long-term retention, but it cannot avoid runtime access by the local stack. A local model cannot answer a prompt without the server-side software being able to read that prompt while it is being processed.
+
+So the privacy limit is not only about whether logging is enabled. Even with minimized logging, the host still has to process the prompt in plaintext at runtime.
+
+That means:
+
+- disabling logs reduces one privacy risk
+- temporary/private chats reduce one storage risk
+- neither of those makes the host blind to prompts during inference
+
+An operator with sufficient access to the host machine could, in principle, inspect running processes, modify the code, enable more verbose logging, or otherwise capture prompt contents. This is why the host remains part of the trust boundary.
 
 ## Web Search and URL Fetch
 
@@ -254,6 +271,7 @@ Likely next steps include:
 - Documented the identity-based Cloudflare Access flow.
 - Documented the server-side Brave search and URL fetch flow.
 - Documented the current logging posture and audit logging status.
+- Clarified the difference between runtime prompt access and persistent logging/storage.
 - Documented the current family temporary-chat privacy posture.
 - Recorded that `fetch_url` is intentionally retained for research quality despite the added privacy tradeoff.
 - Documented that search and URL fetch egress now use a shared Nord VPN/proxy exit rather than the home IP.
