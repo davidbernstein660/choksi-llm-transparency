@@ -40,8 +40,8 @@ That means the search request comes from the server running this service, not di
 
 In practice, this means:
 
-- Brave Search can see the search query and the server's public IP address.
-- If the AI reads a webpage, that destination website can see the server's public IP address and the requested URL.
+- Brave Search can see the search query and the VPN/proxy exit IP used by the service.
+- If the AI reads a webpage, that destination website can see the VPN/proxy exit IP used by the service and the requested URL.
 - Your personal device IP is not sent directly to Brave or the fetched website by these tool calls.
 
 This service currently keeps webpage reading enabled because it improves research quality. That is a deliberate tradeoff, not an accident.

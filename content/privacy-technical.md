@@ -96,23 +96,24 @@ How that works in practice:
 This means the origin of search and fetch traffic is:
 
 - the host running this service
-- its public network egress IP
+- a shared Nord VPN/proxy exit IP used for the research tool path
 
 This means the origin is not:
 
 - the individual user's device IP
 - Cloudflare's public edge
+- the home IP of the host network
 
 What Brave can potentially see:
 
 - the search query text
-- the server public IP
+- the VPN/proxy exit IP used by the service
 - the Brave API key used by the service
 - request timing and normal API metadata
 
 What destination websites can potentially see:
 
-- the server public IP
+- the VPN/proxy exit IP used by the service
 - the URL that was fetched
 - metadata associated with a backend request
 
@@ -240,6 +241,7 @@ Likely next steps include:
 - possible migration to a self-hosted search backend such as SearXNG
 - stronger backup retention and deletion policy
 - more public source publication and review guidance
+- possible future dedicated VPN egress only if reliability later outweighs the privacy benefit of shared exits
 
 ## Change Log
 
@@ -251,3 +253,4 @@ Likely next steps include:
 - Documented the current logging posture and audit logging status.
 - Documented the current family temporary-chat privacy posture.
 - Recorded that `fetch_url` is intentionally retained for research quality despite the added privacy tradeoff.
+- Documented that search and URL fetch egress now use a shared Nord VPN/proxy exit rather than the home IP.
