@@ -22,6 +22,12 @@ The local host has to process the prompt in plaintext in order to run the model 
 
 Family accounts use enforced temporary chats by default, so new family chats should not persist as normal saved chat history.
 
+## Can I share chats publicly from inside the app?
+
+No.
+
+Community sharing is disabled in the current configuration.
+
 ## Are admin chats stored?
 
 They can be, unless temporary chat is used manually.

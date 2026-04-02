@@ -128,6 +128,7 @@
       <h2>Storage and retention</h2>
       <ul>
         <li>Family users are assigned to a group with enforced temporary chat.</li>
+        <li>New non-admin users default into that family privacy group automatically.</li>
         <li>New family chats should not persist as normal stored chat history.</li>
         <li>Admin chats are not automatically temporary.</li>
       </ul>
@@ -175,6 +176,7 @@
         <li>Raw Ollama is not publicly exposed.</li>
         <li>Home Assistant is not publicly exposed.</li>
         <li>Cloudflare Access protects the public app.</li>
+        <li>Community sharing is disabled.</li>
         <li>Admin chat access to other users is disabled in the normal app path.</li>
         <li>Admin analytics derived from chat history are disabled.</li>
         <li>Family users use enforced temporary chats.</li>
@@ -241,6 +243,9 @@
         <li>Documented the current logging posture and audit logging status.</li>
         <li>Documented the current family temporary-chat privacy posture.</li>
         <li>Recorded that <code>fetch_url</code> is intentionally retained for research quality despite the added privacy tradeoff.</li>
+        <li>Documented that search and URL fetch egress now use a shared Nord VPN/proxy exit rather than the home IP.</li>
+        <li>Documented that new non-admin users default into the family privacy group with enforced temporary chat.</li>
+        <li>Documented that community sharing is disabled in the live configuration.</li>
       </ul>
     </article>
   </main>
