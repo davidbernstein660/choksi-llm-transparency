@@ -1,13 +1,13 @@
 # Choksi LLM Public Transparency Site
 
-This folder is a clean public-safe repo scaffold for the future public-facing transparency site.
+This folder is a clean public-safe repo for the public-facing transparency site.
 
 The intended use is:
 
 - publish the plain-language privacy/transparency pages for friends and family
 - publish the public-safe technical privacy document
 - later add links to the public source code repository
-- eventually deploy the static site with Cloudflare Pages
+- deploy the static site with Cloudflare Pages
 
 This repo is intentionally separate from the live local LLM workspace.
 
@@ -18,7 +18,7 @@ This repo is intentionally separate from the live local LLM workspace.
 - public-safe technical privacy documentation
 - FAQ content
 - source/review instructions
-- static site assets and templates later
+- static HTML pages and shared CSS
 
 ## What must not be published here
 
@@ -48,10 +48,19 @@ The internal operator document lives outside this repo at:
 
 That file is intentionally more candid and more operational. It should not be published verbatim.
 
+## Current site files
+
+- `index.html`
+- `privacy/index.html`
+- `privacy/technical/index.html`
+- `faq/index.html`
+- `source/index.html`
+- `assets/site.css`
+- `_headers`
+
 ## Intended next steps
 
 1. Review and refine the public-safe copy in `content/`.
-2. Create a simple static site shell.
-3. Publish this repo to GitHub.
-4. Deploy with Cloudflare Pages.
-5. Add a public custom domain such as `choksillmservice.com`.
+2. Deploy with Cloudflare Pages.
+3. Add the public custom domain `choksillmservice.com`.
+4. Redirect the default `*.pages.dev` hostname to the custom domain.

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Source Code and Review | Choksi LLM</title>
+  <meta name="description" content="Source code and technical review guidance for the Choksi LLM service.">
+  <link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="/">Choksi LLM</a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="/privacy/">Privacy</a>
+        <a href="/privacy/technical/">Technical</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/source/" aria-current="page">Source</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <article class="wrap prose">
+      <p class="eyebrow">Source Code and Technical Review</p>
+      <h1>How to inspect this service</h1>
+
+      <p>
+        This service is intended to be inspectable. The goal is not to ask users to trust high-level
+        claims blindly. Technical users should be able to review the implementation for themselves.
+      </p>
+
+      <h2>What this page is for</h2>
+      <p>This page is meant to direct reviewers to:</p>
+      <ul>
+        <li>the public source code repository</li>
+        <li>the technical privacy document</li>
+        <li>implementation notes and change history</li>
+      </ul>
+
+      <h2>What reviewers should look for</h2>
+      <ul>
+        <li>what is publicly exposed</li>
+        <li>how authentication is handled</li>
+        <li>how prompts are processed</li>
+        <li>how web search is performed</li>
+        <li>what gets logged</li>
+        <li>what gets stored</li>
+        <li>which tools are enabled or disabled</li>
+      </ul>
+
+      <h2>Key questions to ask</h2>
+      <ul>
+        <li>Is the raw model API exposed publicly?</li>
+        <li>Is Home Assistant exposed publicly?</li>
+        <li>Are public users separated by individual identity?</li>
+        <li>Is prompt-body logging intentionally enabled?</li>
+        <li>How are web searches originated?</li>
+        <li>Which third parties can see search or fetch traffic?</li>
+        <li>Are dangerous tools such as shell access exposed to family-facing users?</li>
+      </ul>
+
+      <h2>Public links</h2>
+      <ul>
+        <li><a href="https://github.com/davidbernstein660/choksi-llm-transparency">Public transparency repository</a></li>
+        <li><a href="/privacy/technical/">Technical privacy document</a></li>
+        <li><a href="/privacy/">Privacy and transparency summary</a></li>
+      </ul>
+
+      <h2>Review philosophy</h2>
+      <p>If you are a technical user, you should feel free to:</p>
+      <ul>
+        <li>inspect the code yourself</li>
+        <li>inspect the documentation yourself</li>
+        <li>use your own coding or analysis agents to review the implementation</li>
+        <li>decide not to use the service if the tradeoffs are not acceptable to you</li>
+      </ul>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <p>Choksi LLM</p>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="/">Home</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/privacy/technical/">Technical</a>
+        <a href="/faq/">FAQ</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>

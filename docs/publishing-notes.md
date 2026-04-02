@@ -5,9 +5,9 @@ This file is for preparing the public transparency repo for GitHub and Cloudflar
 ## Current Status
 
 - Content drafts exist in `content/`
-- No site shell or HTML templates exist yet
-- No Git repository has been initialized in this folder yet
-- No GitHub remote has been created yet
+- Static HTML pages and shared CSS now exist
+- A Git repository has been initialized in this folder
+- A public GitHub remote exists for this folder
 - No Cloudflare Pages project has been created yet
 
 ## Pre-Publish Checklist
@@ -18,12 +18,12 @@ This file is for preparing the public transparency repo for GitHub and Cloudflar
 - confirm wording stays clearly non-legal and non-contractual
 - confirm the technical doc remains candid about limitations
 
-## Likely Next Build Step
+## Next Pages Setup Step
 
-Create a simple static site with:
+Create a Cloudflare Pages project connected to the public GitHub repo with:
 
-- homepage
-- privacy/transparency summary page
-- technical privacy page
-- FAQ page
-- source/review page
+- production branch: `main`
+- framework preset: `None`
+- build command: leave blank
+- build output directory: `/`
+- custom domain: `choksillmservice.com`

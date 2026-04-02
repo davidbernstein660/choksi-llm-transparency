@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy &amp; Transparency | Choksi LLM</title>
+  <meta name="description" content="Plain-language privacy and transparency summary for the Choksi LLM service.">
+  <link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="/">Choksi LLM</a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="/privacy/" aria-current="page">Privacy</a>
+        <a href="/privacy/technical/">Technical</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/source/">Source</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <article class="wrap prose">
+      <p class="eyebrow">Privacy &amp; Transparency</p>
+      <h1>How this service handles data</h1>
+      <p class="meta">Last updated: 2026-04-02</p>
+
+      <p>
+        This page explains, in plain language, how this service handles data.
+      </p>
+      <p>
+        This is not a legal contract, terms of service, or formal privacy policy. It is a technical
+        transparency note for friends and family so you can decide whether you are comfortable using
+        the service.
+      </p>
+
+      <h2>What this service is</h2>
+      <p>
+        This is a self-hosted AI chat service running on a private Mac. It uses local models through
+        Ollama and a web interface through Open WebUI. Public access is protected by Cloudflare Access.
+      </p>
+
+      <h2>What data is used</h2>
+      <ul>
+        <li>Your approved email address is used for login through Cloudflare Access.</li>
+        <li>Your prompts and responses are processed by the local server so the AI can answer.</li>
+        <li>If web search is used, search queries are sent to Brave Search.</li>
+        <li>If the AI reads a webpage, the server fetches that page directly.</li>
+      </ul>
+
+      <h2>What is not publicly exposed</h2>
+      <ul>
+        <li>Home Assistant is not exposed to the public internet.</li>
+        <li>The raw Ollama API is not exposed to the public internet.</li>
+        <li>The public site only exposes the web interface behind Cloudflare Access.</li>
+      </ul>
+
+      <h2>What is stored</h2>
+      <ul>
+        <li>Family accounts use temporary chats by default.</li>
+        <li>That means normal family chat history should not be retained as persistent chat history.</li>
+        <li>Some operational logs still exist.</li>
+        <li>Admin chats may still be stored unless temporary chat is used manually.</li>
+      </ul>
+
+      <h2>Web search privacy</h2>
+      <p>
+        Web search in this service is server-side. That means the search request comes from the server
+        running this service, not directly from your device.
+      </p>
+      <p>In practice, this means:</p>
+      <ul>
+        <li>Brave Search can see the search query and the server's public IP address.</li>
+        <li>If the AI reads a webpage, that destination website can see the server's public IP address and the requested URL.</li>
+        <li>Your personal device IP is not sent directly to Brave or the fetched website by these tool calls.</li>
+      </ul>
+      <p>
+        This service currently keeps webpage reading enabled because it improves research quality. That is
+        a deliberate tradeoff, not an accident.
+      </p>
+
+      <h2>Important limits</h2>
+      <ul>
+        <li>This service is private, but not anonymous.</li>
+        <li>Cloudflare Access uses identity-based login.</li>
+        <li>The server must see prompts in plaintext while processing them.</li>
+        <li>Anyone with sufficient access to the host machine could inspect local files or logs.</li>
+      </ul>
+
+      <h2>How to use it safely</h2>
+      <ul>
+        <li>Do not paste passwords, recovery codes, banking credentials, or other highly sensitive secrets.</li>
+        <li>Treat this like a useful private research tool, not a secure vault.</li>
+        <li>If something would seriously harm you if exposed, do not paste it here.</li>
+      </ul>
+
+      <section class="callout">
+        <h2>Technical review</h2>
+        <p>
+          A much more detailed technical privacy document is available for anyone who wants to inspect
+          the system more closely.
+        </p>
+        <p>
+          If you want, you are welcome to review the implementation yourself or use your own coding,
+          security, or analysis tools to evaluate it before using the service.
+        </p>
+        <p class="inline-links">
+          <a href="/privacy/technical/">Technical Privacy Document</a>
+          <a href="/source/">Source Code and Review Guidance</a>
+        </p>
+      </section>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <p>Choksi LLM</p>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="/">Home</a>
+        <a href="/privacy/technical/">Technical</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/source/">Source</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
