@@ -30,6 +30,12 @@
       <p class="meta">Last updated: 2026-04-02</p>
       <p>This document is the public-safe technical privacy reference for <code>Choksi LLM</code>.</p>
       <p>It is intentionally detailed, but it is still not a legal contract, terms of service, or formal privacy policy. It is a technical explanation of how the service is currently designed and what privacy tradeoffs exist.</p>
+      <h2>Do Not Paste Secrets</h2>
+      <p>Do not paste passwords, recovery codes, banking credentials, or other highly sensitive secrets into this service.</p>
+      <p>This service is more private than a typical cloud chatbot, but it is not anonymous, it is not a secure vault, and it is not end-to-end encrypted from the host operator.</p>
+      <h2>Scope of This Review</h2>
+      <p>This technical review is version-specific.</p>
+      <ul><li>Current reviewed Open WebUI image: <code>ghcr.io/open-webui/open-webui:v0.8.12</code></li><li>Current reviewed Open WebUI version label: <code>0.8.12</code></li><li>Review date: <code>2026-04-02</code></li><li>Signed-in users can inspect the in-app <code>Privacy Status</code> page for the current observed runtime logging state and last successful verification time</li><li>These claims should be re-verified after Open WebUI image updates, config changes, or significant override changes</li></ul>
       <h2>Purpose</h2>
       <p>This document exists so that technical users can evaluate the service before using it.</p>
       <p>It is written to be inspectable by:</p>
@@ -46,6 +52,8 @@
       <ul><li>Open WebUI uses the Cloudflare-authenticated email as the in-app identity</li><li>users do not share one common chat account</li><li>family access is individually authenticated through Cloudflare Access</li></ul>
       <p>This means:</p>
       <ul><li>access is identity-based</li><li>it is not anonymous access</li><li>Cloudflare can see which approved identity authenticated</li></ul>
+      <p>Cloudflare is also part of the public data path for the app:</p>
+      <ul><li>browser traffic for the public app passes through Cloudflare&#x27;s edge before it reaches the origin</li><li>Cloudflare is therefore not only an authentication provider here; it is also a middle layer in the request/response path</li><li>Cloudflare can technically access request and response content in transit as part of that role</li></ul>
       <h2>Prompt and Response Processing</h2>
       <p>When a user sends a message:</p>
       <ol><li>the browser sends the message to Open WebUI</li><li>Open WebUI processes the request</li><li>Open WebUI sends the model request to Ollama</li><li>Ollama runs the local model</li><li>the response is returned through Open WebUI to the browser</li></ol>
@@ -70,6 +78,10 @@
       <ul><li>the individual user&#x27;s device IP</li><li>Cloudflare&#x27;s public edge</li><li>the home IP of the host network</li></ul>
       <p>What Brave can potentially see:</p>
       <ul><li>the search query text</li><li>the VPN/proxy exit IP used by the service</li><li>the Brave API key used by the service</li><li>request timing and normal API metadata</li></ul>
+      <p>What the VPN/proxy provider can potentially see:</p>
+      <ul><li>that search and fetch traffic is being carried through its transport path</li><li>destination hosts/IPs, timing, and connection-level metadata for that traffic</li><li>normal transport metadata associated with those outbound connections</li></ul>
+      <p>Important distinction:</p>
+      <ul><li>Brave still sees the search query itself</li><li>fetched websites still see the requested URL</li><li>the VPN/proxy path helps hide the home IP, but it does not remove Brave or the VPN/proxy provider from the trust chain</li></ul>
       <p>What destination websites can potentially see:</p>
       <ul><li>the VPN/proxy exit IP used by the service</li><li>the URL that was fetched</li><li>metadata associated with a backend request</li></ul>
       <p>Current design choice:</p>
@@ -88,7 +100,7 @@
       <ul><li>ordinary Open WebUI logs are metadata-oriented rather than prompt-body logging</li><li>ordinary Ollama logs are metadata-oriented rather than prompt-body logging</li><li>ordinary cloudflared logs are metadata-oriented rather than prompt-body logging</li></ul>
       <p>Open WebUI also contains an upstream audit logging system that could capture request and response bodies if enabled.</p>
       <p>Current verified runtime state on 2026-04-02:</p>
-      <ul><li><code>GLOBAL_LOG_LEVEL=INFO</code></li><li><code>AUDIT_LOG_LEVEL=NONE</code></li><li>audit log file output disabled</li><li>no audit log file present in the Open WebUI data directory at the time of the check</li></ul>
+      <ul><li><code>GLOBAL_LOG_LEVEL=INFO</code></li><li><code>AUDIT_LOG_LEVEL=NONE</code></li><li>audit log file output disabled</li><li>no audit log file present in the Open WebUI data directory at the time of the check</li><li>signed-in users can inspect the current observed runtime state inside the app on the <code>Privacy Status</code> page</li></ul>
       <p>That means prompt-body logging is not intentionally enabled in the current normal request path.</p>
       <p>Important nuance:</p>
       <ul><li>this is not a cryptographic guarantee that prompt text could never appear in any log under every bug, failure mode, or future update</li><li>this should be re-verified after Open WebUI updates or image changes because a future upstream version could change defaults</li></ul>
@@ -122,10 +134,10 @@
       <ul><li>passwords</li><li>recovery codes</li><li>banking credentials</li><li>highly sensitive personal secrets</li><li>anything that would cause serious harm if exposed</li></ul>
       <h2>Future Privacy Improvements</h2>
       <p>Likely next steps include:</p>
-      <ul><li>automatic checks that confirm audit logging remains disabled across Open WebUI updates</li><li>possible migration to a self-hosted search backend such as SearXNG</li><li>possible tightening of the current rollback-backup retention windows if operational rollback needs change</li><li>more public source publication and review guidance</li><li>possible future dedicated VPN egress only if reliability later outweighs the privacy benefit of shared exits</li></ul>
+      <ul><li>stronger alerting or notification when the in-app privacy-status check detects drift</li><li>possible migration to a self-hosted search backend such as SearXNG</li><li>possible tightening of the current rollback-backup retention windows if operational rollback needs change</li><li>more public source publication and review guidance</li><li>possible future dedicated VPN egress only if reliability later outweighs the privacy benefit of shared exits</li></ul>
       <h2>Change Log</h2>
       <h3>2026-04-02</h3>
-      <ul><li>Created the first public-safe technical privacy document.</li><li>Documented the identity-based Cloudflare Access flow.</li><li>Documented the server-side Brave search and URL fetch flow.</li><li>Documented the current logging posture and audit logging status.</li><li>Clarified the difference between runtime prompt access and persistent logging/storage.</li><li>Documented the current family temporary-chat privacy posture.</li><li>Recorded that <code>fetch_url</code> is intentionally retained for research quality despite the added privacy tradeoff.</li><li>Documented that search and URL fetch egress now use a shared Nord VPN/proxy exit rather than the home IP.</li><li>Clarified that Brave queries and fetched pages use the VPN/proxy path, while Brave still sees the query and the VPN/proxy provider remains part of the trust boundary.</li><li>Documented that new non-admin users default into the family privacy group with enforced temporary chat.</li><li>Documented that community sharing is disabled in the live configuration.</li><li>Updated the family retention model so users can choose temporary/private chats or persistent chats instead of being forced into temporary mode.</li><li>Clarified that earlier retained non-admin chats were deleted on 2026-04-02, while new persistent non-admin chats can still exist by design when users choose persistent mode.</li><li>Clarified that &quot;admin chats&quot; refers to operator self-use, not automatic access to other users&#x27; chats.</li><li>Deleted four rollback database snapshots known to contain non-admin chats.</li><li>Added an automatic rollback-backup retention policy: 24 hours for backups containing non-admin chats and 72 hours for other database rollback backups.</li></ul>
+      <ul><li>Created the first public-safe technical privacy document.</li><li>Documented the identity-based Cloudflare Access flow.</li><li>Documented the server-side Brave search and URL fetch flow.</li><li>Documented the current logging posture and audit logging status.</li><li>Clarified the difference between runtime prompt access and persistent logging/storage.</li><li>Documented the current family temporary-chat privacy posture.</li><li>Recorded that <code>fetch_url</code> is intentionally retained for research quality despite the added privacy tradeoff.</li><li>Documented that search and URL fetch egress now use a shared Nord VPN/proxy exit rather than the home IP.</li><li>Clarified that Brave queries and fetched pages use the VPN/proxy path, while Brave still sees the query and the VPN/proxy provider remains part of the trust boundary.</li><li>Documented that new non-admin users default into the family privacy group with enforced temporary chat.</li><li>Documented that community sharing is disabled in the live configuration.</li><li>Updated the family retention model so users can choose temporary/private chats or persistent chats instead of being forced into temporary mode.</li><li>Clarified that earlier retained non-admin chats were deleted on 2026-04-02, while new persistent non-admin chats can still exist by design when users choose persistent mode.</li><li>Clarified that &quot;admin chats&quot; refers to operator self-use, not automatic access to other users&#x27; chats.</li><li>Deleted four rollback database snapshots known to contain non-admin chats.</li><li>Added an automatic rollback-backup retention policy: 24 hours for backups containing non-admin chats and 72 hours for other database rollback backups.</li><li>Added an in-app <code>Privacy Status</code> page that shows the current observed Open WebUI version, runtime logging state, and last successful verification time.</li><li>Clarified that this technical review is specific to the reviewed Open WebUI version and should be re-verified after updates.</li><li>Clarified that Cloudflare is in the public browser-to-origin path for the app, not only the authentication step.</li><li>Clarified that the VPN/proxy provider remains part of the transport trust boundary for search and fetch traffic.</li></ul>
     </article>
   </main>
 

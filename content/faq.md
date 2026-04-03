@@ -18,6 +18,12 @@ Yes, during processing.
 
 The local host has to process the prompt in plaintext in order to run the model and produce a response.
 
+## Can I see the current logging state?
+
+Yes.
+
+Inside the app, the `Privacy & Transparency` link opens an in-app `Privacy Status` page that shows the current observed Open WebUI version, runtime logging settings, audit-log-file status, and last successful verification time.
+
 ## Are family chats stored?
 
 Family users can now choose between temporary/private chats and persistent chats.

@@ -6,6 +6,8 @@ This page explains, in plain language, how this service handles data.
 
 This is not a legal contract, terms of service, or formal privacy policy. It is a technical transparency note for friends and family so you can decide whether you are comfortable using the service.
 
+Signed-in users can open the in-app Privacy Status page from inside the app to see the current observed Open WebUI version, logging state, and last successful verification time.
+
 ## What This Service Is
 
 This is a self-hosted AI chat service running on a private Mac.
@@ -55,6 +57,7 @@ This service currently keeps webpage reading enabled because it improves researc
 
 - This service is private, but not anonymous.
 - Cloudflare Access uses identity-based login.
+- Cloudflare is in the public browser-to-origin path for the app, not only the login step.
 - The server must see prompts in plaintext while processing them.
 - The public transparency site asks not to be indexed or AI-crawled, but it is still a public website and non-compliant bots can ignore those controls.
 - Anyone with sufficient access to the host machine could inspect local files or logs.

@@ -22,6 +22,7 @@ Technical reviewers should check:
 - how web search is performed
 - what gets logged
 - what gets stored
+- whether the in-app Privacy Status page matches the public docs
 - which tools are enabled or disabled
 
 ## Key Questions To Ask
@@ -29,6 +30,8 @@ Technical reviewers should check:
 - Is the raw model API exposed publicly?
 - Is Home Assistant exposed publicly?
 - Are public users separated by individual identity?
+- Which Open WebUI version is currently running?
+- Does the in-app Privacy Status page match the written documentation?
 - Is prompt-body logging intentionally enabled?
 - How are web searches originated?
 - Which third parties can see search or fetch traffic?

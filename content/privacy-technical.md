@@ -6,6 +6,22 @@ This document is the public-safe technical privacy reference for `Choksi LLM`.
 
 It is intentionally detailed, but it is still not a legal contract, terms of service, or formal privacy policy. It is a technical explanation of how the service is currently designed and what privacy tradeoffs exist.
 
+## Do Not Paste Secrets
+
+Do not paste passwords, recovery codes, banking credentials, or other highly sensitive secrets into this service.
+
+This service is more private than a typical cloud chatbot, but it is not anonymous, it is not a secure vault, and it is not end-to-end encrypted from the host operator.
+
+## Scope of This Review
+
+This technical review is version-specific.
+
+- Current reviewed Open WebUI image: `ghcr.io/open-webui/open-webui:v0.8.12`
+- Current reviewed Open WebUI version label: `0.8.12`
+- Review date: `2026-04-02`
+- Signed-in users can inspect the in-app `Privacy Status` page for the current observed runtime logging state and last successful verification time
+- These claims should be re-verified after Open WebUI image updates, config changes, or significant override changes
+
 ## Purpose
 
 This document exists so that technical users can evaluate the service before using it.
@@ -59,6 +75,12 @@ This means:
 - access is identity-based
 - it is not anonymous access
 - Cloudflare can see which approved identity authenticated
+
+Cloudflare is also part of the public data path for the app:
+
+- browser traffic for the public app passes through Cloudflare's edge before it reaches the origin
+- Cloudflare is therefore not only an authentication provider here; it is also a middle layer in the request/response path
+- Cloudflare can technically access request and response content in transit as part of that role
 
 ## Prompt and Response Processing
 
@@ -128,6 +150,18 @@ What Brave can potentially see:
 - the Brave API key used by the service
 - request timing and normal API metadata
 
+What the VPN/proxy provider can potentially see:
+
+- that search and fetch traffic is being carried through its transport path
+- destination hosts/IPs, timing, and connection-level metadata for that traffic
+- normal transport metadata associated with those outbound connections
+
+Important distinction:
+
+- Brave still sees the search query itself
+- fetched websites still see the requested URL
+- the VPN/proxy path helps hide the home IP, but it does not remove Brave or the VPN/proxy provider from the trust chain
+
 What destination websites can potentially see:
 
 - the VPN/proxy exit IP used by the service
@@ -185,6 +219,7 @@ Current verified runtime state on 2026-04-02:
 - `AUDIT_LOG_LEVEL=NONE`
 - audit log file output disabled
 - no audit log file present in the Open WebUI data directory at the time of the check
+- signed-in users can inspect the current observed runtime state inside the app on the `Privacy Status` page
 
 That means prompt-body logging is not intentionally enabled in the current normal request path.
 
@@ -274,7 +309,7 @@ Do not paste:
 
 Likely next steps include:
 
-- automatic checks that confirm audit logging remains disabled across Open WebUI updates
+- stronger alerting or notification when the in-app privacy-status check detects drift
 - possible migration to a self-hosted search backend such as SearXNG
 - possible tightening of the current rollback-backup retention windows if operational rollback needs change
 - more public source publication and review guidance
@@ -300,3 +335,7 @@ Likely next steps include:
 - Clarified that "admin chats" refers to operator self-use, not automatic access to other users' chats.
 - Deleted four rollback database snapshots known to contain non-admin chats.
 - Added an automatic rollback-backup retention policy: 24 hours for backups containing non-admin chats and 72 hours for other database rollback backups.
+- Added an in-app `Privacy Status` page that shows the current observed Open WebUI version, runtime logging state, and last successful verification time.
+- Clarified that this technical review is specific to the reviewed Open WebUI version and should be re-verified after updates.
+- Clarified that Cloudflare is in the public browser-to-origin path for the app, not only the authentication step.
+- Clarified that the VPN/proxy provider remains part of the transport trust boundary for search and fetch traffic.

@@ -6,6 +6,8 @@ Self-hosted AI for friends and family, with candid documentation.
 
 This is a self-hosted AI service for friends and family. It is more private than a typical cloud chatbot, but it is not anonymous and it is not a secure place for secrets.
 
+Signed-in users can also open an in-app Privacy Status page to see the current observed Open WebUI version, logging state, and last successful verification time.
+
 Users are encouraged to inspect the public repository and technical privacy document before using the service.
 
 The goal is not to ask people to trust broad claims. Users are encouraged to inspect the code and make their own call.
@@ -21,6 +23,7 @@ The goal is not to ask people to trust broad claims. Users are encouraged to ins
 
 - Read the plain-language privacy summary.
 - Read the technical privacy document if you want the deeper details.
+- If you sign in, open the in-app Privacy Status page to compare the live runtime state with the docs.
 - Inspect the source code yourself if you want to verify the implementation.
 - Use the app only after you are comfortable with the documented tradeoffs.
 
