@@ -22,7 +22,7 @@ The local host has to process the prompt in plaintext in order to run the model 
 
 Family users can now choose between temporary/private chats and persistent chats.
 
-If a family user uses temporary/private mode, that chat should not persist as normal saved chat history. If a family user chooses persistent mode, that chat may be stored locally. Known older non-admin chats were removed from the live database.
+If a family user uses temporary/private mode, that chat should not persist as normal saved chat history. If a family user chooses persistent mode, that chat may be stored locally. Earlier retained non-admin chats from before the current private/persistent chat model were deleted from the live database on April 2, 2026. Recent rollback backups can still temporarily retain stored chats inside the current backup retention window.
 
 ## Can I share chats publicly from inside the app?
 

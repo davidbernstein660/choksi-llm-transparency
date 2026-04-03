@@ -146,18 +146,19 @@ Current retention behavior:
 - family users are assigned to a group with optional temporary/private chat
 - new non-admin users default into that family privacy group automatically
 - family users can choose between temporary/private chats and persistent chats
-- no known non-admin chats remain in the live database at the time of this update
-- operator/admin chats are not automatically temporary
+- earlier retained non-admin chats from before the current private/persistent chat model were deleted from the live database on 2026-04-02 and verified at that time
+- after private/persistent mode was introduced, new persistent non-admin chats may exist in the live database by design when users choose persistent mode
+- operator self-use on the admin account is not automatically temporary
 
 Known limits:
 
 - the operator's own admin-account chats may still be stored unless temporary chat is used manually
 - older admin history may still exist
-- backups may still contain older admin chat data
+- recent rollback database backups may temporarily retain stored chat data within the current backup retention window
 
 In this document, "admin chats" refers to chats created by the operator while using the admin account. It does not mean the operator automatically receives normal in-app access to other users' private chats.
 
-Older family chats that existed before the current private-vs-persistent mode were purged from the live database, the later residual non-admin chat was also removed, and the backup database snapshots known to contain family chat history were deleted.
+Rollback database backups are now treated as short-lived operational artifacts rather than indefinite archives. Backups containing non-admin chats are pruned automatically after 24 hours. Other database rollback backups are pruned automatically after 72 hours. Recent backups inside those windows should still be treated as sensitive.
 
 ## Logging
 
@@ -178,17 +179,19 @@ Current observed normal-operation behavior:
 
 Open WebUI also contains an upstream audit logging system that could capture request and response bodies if enabled.
 
-Current intended runtime state:
+Current verified runtime state on 2026-04-02:
 
 - `GLOBAL_LOG_LEVEL=INFO`
 - `AUDIT_LOG_LEVEL=NONE`
 - audit log file output disabled
+- no audit log file present in the Open WebUI data directory at the time of the check
 
 That means prompt-body logging is not intentionally enabled in the current normal request path.
 
 Important nuance:
 
 - this is not a cryptographic guarantee that prompt text could never appear in any log under every bug, failure mode, or future update
+- this should be re-verified after Open WebUI updates or image changes because a future upstream version could change defaults
 
 ## Current Privacy Controls
 
@@ -271,9 +274,9 @@ Do not paste:
 
 Likely next steps include:
 
-- outbound privacy for searches and page fetches, such as a VPN or other private egress layer
+- automatic checks that confirm audit logging remains disabled across Open WebUI updates
 - possible migration to a self-hosted search backend such as SearXNG
-- stronger backup retention and deletion policy
+- possible tightening of the current rollback-backup retention windows if operational rollback needs change
 - more public source publication and review guidance
 - possible future dedicated VPN egress only if reliability later outweighs the privacy benefit of shared exits
 
@@ -292,5 +295,8 @@ Likely next steps include:
 - Clarified that Brave queries and fetched pages use the VPN/proxy path, while Brave still sees the query and the VPN/proxy provider remains part of the trust boundary.
 - Documented that new non-admin users default into the family privacy group with enforced temporary chat.
 - Documented that community sharing is disabled in the live configuration.
-- Documented that no known non-admin chats remain in the live database after the later cleanup pass.
 - Updated the family retention model so users can choose temporary/private chats or persistent chats instead of being forced into temporary mode.
+- Clarified that earlier retained non-admin chats were deleted on 2026-04-02, while new persistent non-admin chats can still exist by design when users choose persistent mode.
+- Clarified that "admin chats" refers to operator self-use, not automatic access to other users' chats.
+- Deleted four rollback database snapshots known to contain non-admin chats.
+- Added an automatic rollback-backup retention policy: 24 hours for backups containing non-admin chats and 72 hours for other database rollback backups.

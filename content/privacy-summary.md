@@ -29,7 +29,9 @@ It uses local models through Ollama and a web interface through Open WebUI. Publ
 
 - Family users can choose between temporary/private chats and persistent chats.
 - Temporary/private chats are less likely to remain as normal saved chat history, while persistent chats may be stored locally.
-- No known non-admin chats remain in the live database at the time of this update.
+- Earlier retained non-admin chats from before the current private/persistent chat model were deleted from the live database on April 2, 2026.
+- New non-admin chats may exist in the live database by design when a user chooses persistent mode.
+- Short-lived rollback backups can temporarily retain stored chat data within the current backup retention window.
 - Community chat sharing is disabled.
 - Some operational logs still exist.
 - The operator's own admin-account chats may still be stored unless temporary chat is used manually. This refers to the operator's own use of the service, not automatic access to other users' chats.
