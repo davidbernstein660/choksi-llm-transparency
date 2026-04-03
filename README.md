@@ -44,7 +44,7 @@ This repo is intentionally separate from the live local LLM workspace.
 
 The internal operator document lives outside this repo at:
 
-- [Privacy.local.md](/Users/llmservice/Desktop/llmservice/Privacy.local.md)
+- `Privacy.local.md` in the local operator workspace
 
 That file is intentionally more candid and more operational. It should not be published verbatim.
 
